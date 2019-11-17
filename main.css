@@ -1,0 +1,294 @@
+body {
+    background-color:#F0F0F0;
+    padding: 2%;
+    font-family: 'Raleway','Source Sans Pro', 'Arial';
+}
+.add-points{
+    text-align: center;
+    border-bottom: 3px solid black;
+    padding: 9px;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: -10%;
+    margin: 0;
+}
+.header{
+    background-color: black;
+    position: fixed;
+    top: 0%;
+    left:0%;
+    width:100%;
+    height: 8%;
+}
+.leftColumn{
+    background-color: white;
+    border-style: none;
+    border-radius: 8px;
+    position: fixed;
+    top: 9%;
+    left: 2%;
+    width: 22.3%;
+    height: 88%;
+    padding: 2px;
+}
+.middleColumn{
+    background-color: white;
+    border-style: none;
+    border-radius: 8px;
+    position: fixed;
+    top: 9%;
+    left: 26%;
+    width: 50.00%;
+    height: 88%;
+    padding: 2px;
+}
+.middle-label{
+    background-color: rgb(80, 199, 247);
+    border-radius: 6px;
+    position: absolute;
+    width: 99.00%;
+    height: 9%;
+    top: 0.75%;
+    left: 0.5%;
+
+    text-align: center;
+    font-size: 40px;
+}
+.rightColumn{
+    background-color: white;
+    border-style: none;
+    border-radius: 8px;
+    position: fixed;
+    top: 9%;
+    left: 77.5%;
+    width: 20%;
+    height: 25%;
+}
+label {
+    display:block;
+    margin-bottom:10px;
+}
+input {
+    padding:2px;
+    width: 30%;
+    margin-bottom: 1em;
+}
+.ok-button{
+    position: absolute;
+    top: 11px;
+    left: 63px;
+    margin: 1px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    display:block;
+    cursor: pointer;
+    border: none;
+    background-color: black;
+    border: solid;
+    border-color: black;
+    color: white;
+    font-size: 10px;
+}
+
+.proceed{
+    position: absolute;
+    top: 285px;
+    left: 530px;
+    margin: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display:block;
+    cursor: pointer;
+    border: none;
+    background-color: black;
+    border: solid;
+    border-color: black;
+    color: white;
+}
+.proceed:hover{
+    background-color: white;
+    border: solid;
+    border-color: black;
+    color: black;
+}
+p.submit-message{
+    position: relative;
+    top: 500px;
+    left: 500px;
+    width: 100%;
+}
+
+#instructor {
+    padding:1em;
+    background-color:#fff;
+    margin: 1em 0;
+}
+
+.student-template{
+    position: relative;
+    left: 5%;
+    width: 40%;
+}
+
+.divider{
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    width: 45%;
+}
+
+.lacasa-logo{
+    position: relative;
+    top: 30px;
+    left: 10%;
+    width: 80%;
+}
+.banner{
+    position: absolute;
+    top:-250px;
+    left: 30%;
+    width: 100%;
+}
+.about{
+    position: relative;
+    top: 280px;
+    left: 30px;
+    width: 90px;
+    height: 110px;
+    font-size:medium;
+    text-align: center;
+    border-left: 5px solid black;
+}
+.about-info{
+    position: relative;
+    top: -5px;
+    left: 20px;
+    width: 265%;
+    font-size: small;
+    font-family: "Arial Narrow";
+    font-style: normal;
+    text-align: justify;
+}
+.student-number{
+    position: absolute;
+    top: 292px;
+    left: 180px;
+    width: 175px;
+}
+
+.student-info{
+    position: absolute;
+    top: 335px;
+    left: 130px;
+    text-align: center;
+    font-size: small;
+}
+
+.services{
+    position: absolute;
+    top: 90px;
+    left: 430px;
+    width: 190px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    text-align: center;
+
+    border-left: 5px solid black;
+}
+
+.service-supplies{
+    position: absolute;
+    top: 150px;
+    left: 535px;
+    width: 160px;
+
+    font-size: 15px;
+}
+
+.service-book{
+    position: absolute;
+    top: 180px;
+    left: 535px;
+    width: 160px;
+
+    font-size: 15px;
+}
+
+.service-appoint{
+    position: absolute;
+    top: 207px;
+    left: 605px;
+    width: 140px;
+
+    font-size: 15px;
+    text-align: center;
+}
+
+.service-note{
+    position: absolute;
+    top: 235px;
+    left: 420px;
+    width: 330px;
+
+    font-size: 13px;
+}
+
+.checkbox{
+    position: absolute;
+    top: 150.3px;
+    left: 408px;
+    width: 50px;
+}
+
+.receipt{
+    position: absolute;
+    top: 310px;
+    left: 415px;
+    width: 330px;
+
+    font-size: 15px;
+    text-align: center;
+}
+
+.add-options{
+    position: relative;
+    top: -20px;
+    left: 40px;
+    width: 230px;
+
+    font-size: 15px;
+    align-content: center;
+    
+}
+
+.add-note{
+    position: relative;
+    top: -5px;
+    font-size: 13px;
+    margin: 25px;
+}
+
+.add{
+    position: relative;
+    top: -15px;
+    left: 110px;
+    margin: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display:block;
+    cursor: pointer;
+    border: none;
+    background-color: black;
+    border: solid;
+    border-color: black;
+    color: white;
+}

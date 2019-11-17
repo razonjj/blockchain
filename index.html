@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LACAcademia</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="header"></div>
+
+        <div class="leftColumn">
+            <img class="lacasa-logo" src = "lacasa-logo.PNG">
+            <h1 class="about">About Us</h>
+                <p class="about-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat tellus sit amet tortor egestas vestibulum. Aliquam eu posuere justo, nec semper turpis. Ut laoreet ornare lacus, tempor eleifend lorem pulvinar ac.</p>
+            </div>
+
+        <div class="middleColumn">
+            <div class="middle-label">STUDENT INFORMATION</div>
+        <h1> Student's Information</h1>
+        <img class ="student-template" src = "student-template.PNG">
+        <img class ="divider" src = "check-list.PNG">
+
+        <h2 id="student"></h2>
+
+        <div class="student-number">
+            <label for="studentNumber" class="col-lg-2 control-label"></label>
+            <input id="studentNumber" type="text">
+
+            <button id="ok-button" class="ok-button">OK</button>
+        </div>
+
+        <div class="student-info">
+            <h3 class="Name">JUAN DELA CRUZ</h3>
+            <h3 class="Program">BS CpE</h3>
+            <h3 class="yearLevel">4th Year</h3>
+        </div>
+
+        <div class="services">Available Services</div>
+        <div class="service-note">
+            <p>**Note: You can only select one service per transaction. Thank you.</p>
+        </div>
+
+        <div class="checkbox">
+                    <input type="checkbox" name="service1" onclick="disable1()"value="service1"><br>
+                    <input type="checkbox" name="service2" onclick="disable2()"value="service2"><br>
+                    <input type="checkbox" name="service3" onclick="disable3()"value="service3"><br><br>
+        </div>
+
+
+        <select id="service-supplies" class="service-supplies">
+            <option value="select">--Please Select--</option>
+            <option value="ballpen">Ballpen</option>
+            <option value="book">Book</option>
+            <option value="notebook">Notebook</option>
+            <option value="none">None</option>
+          </select>
+
+          <select id="service-book" class="service-book">
+            <option value="select">--Please Select--</option>
+            <option value="engineering">Engineering</option>
+            <option value="gen-ed">General Education</option>
+            <option value="sci-math">Science & Mathematics</option>
+            <option value="none">None</option>
+          </select>
+
+          <select id="service-appoint" class="service-appoint">
+            <option value="select">--Please Select--</option>
+            <option value="career">Career Center</option>
+            <option value="clinic">Clinic</option>
+            <option value="guidance">Guidance</option>
+            <option value="none">None</option>
+          </select>
+
+        <button id="proceed" class="proceed" onclick="submitService()">Proceed</button>
+
+        
+        <div class="receipt">
+                <p>-------------------------Receipt-------------------------</p>
+                <p class="date-time" id ="date-time"></p>
+            </div>
+        </div>
+
+        <div class="rightColumn">
+            <h3 class="add-points">Add Reward Points</h3>
+            <p class="add-note">Additional reward points can be generated through the following:</p>
+            <select id="add-options" class="add-options">
+                <option value="select">--Please Select--</option>
+                <option value="tuition">Full tuition fee payment</option>
+                <option value="bring-a-friend">Bring-A-Friend Program</option>
+                <option value="grade">General Weighted Average</option>
+                <option value="none">None</option>
+              </select>
+            <button id="add" class="add" onclick="submitPoints()">Add points</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+    <script>
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+
+        var ProjectContract = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "student",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "Add_Points",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "create",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "student",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "Spend_Points",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "Sent",
+		"type": "event"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "admin",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "balance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+])
+
+    var Project = ProjectContract.at('0x2d172C4A1139617534A29d7481E777B936da4895');
+    console.log(Project);
+
+    function submitService(){
+        var txt;
+        if(confirm("Are you sure you want to submit this transaction?")){
+            txt = "Transaction has been successfully submitted";
+        }else{
+            txt = "Transaction has been canceled";
+        }
+        document.getElementById("subscribe").innerHTML = text;
+    }
+
+    function submitPoints(){
+        var txt;
+        if(confirm("Are you sure you want to submit this transaction?")){
+            txt = "Additional reward points have been successfully saved";
+        }else{
+            txt = "Transaction has been canceled";
+        }
+        document.getElementById("subscribe").innerHTML = text;
+    }
+
+    function disable1(){
+            document.getElementById("service-supplies").disabled=false; 
+            document.getElementById("service-book").disabled=true;
+            document.getElementById("service-appoint").disabled=true;
+    }
+
+    function disable2(){
+            document.getElementById("service-supplies").disabled=true; 
+            document.getElementById("service-book").disabled=false;
+            document.getElementById("service-appoint").disabled=true;
+    }
+
+    function disable3(){
+            document.getElementById("service-supplies").disabled=true; 
+            document.getElementById("service-book").disabled=true;
+            document.getElementById("service-appoint").disabled=false;
+    }
+    
+    var d = new Date();
+    document.getElementById("date-time").innerHTML = d;
+    
+    </script>
+
+</body>
+</html>
